@@ -1,7 +1,4 @@
 import { MongoClient } from "mongodb";
-
-
-
 export class connect{
     user;
     port;
@@ -31,9 +28,7 @@ export class connect{
     this.db = this.conexion.db(this.getDbName)
     connect.instance = this;
     return this;
-   
     }
-
     set setPass(pass){
         this.#pass = pass;
     }
@@ -59,15 +54,14 @@ export class connect{
         return this.#dbName;
     }
     async #open(){
-        this.conexion = MongoClient.connect(this.getCluster(), {useNewUrlParser: true, useUnifiedTopology: true, auth: {user: this.getUser(), password: this.getPass()}});
+        this.conexion = new MongoClient(`${this.getHost}${this.user}:${this.getPass}@${this.getCluster}:${this.port}`)
+        console.log("Connected")
         await this.conexion.connect();
     }
-
+    async reconnect(){
+        await this.#open();
+    }
     async close(){
         await this.conexion.close();
-    }
-    async reconnect(){
-        await this.conexion.close();
-        this.#open();
     }
 }

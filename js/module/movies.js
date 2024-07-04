@@ -7,19 +7,19 @@ export class movies extends connect{
             return movies.instance;
         }
         super();
-        this.collection = this.db.collection("movies");
+        this.collection = this.db.collection("movis");
         movies.instance = this;
         return this;
     }
     async getAllMovies(){
-        let res = await this.collection.agregate([
+        let res = await this.collection.aggregate([
             {
-                $proyect :{
-                    name:1
+                $project :{
+                    name: 1
                 }
             }
         ]).toArray();
-        await this.collection.close();
+        await this.conexion.close();
         return res;
     }
 }
