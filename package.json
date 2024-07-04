@@ -1,0 +1,17 @@
+{
+  "name": "ejercicioadelantado",
+  "version": "1.0.0",
+  "main": "js/main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "js/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mongodb": "^6.8.0"
+  }
+}
